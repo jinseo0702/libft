@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_onlyisspace.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jinseo <jinseo@student.42gyeongsan.kr      +#+  +:+       +#+        */
+/*   By: jinseo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/26 13:50:16 by jinseo            #+#    #+#             */
-/*   Updated: 2024/02/28 19:25:50 by jinseo           ###   ########.fr       */
+/*   Created: 2025/03/27 20:15:56 by jinseo            #+#    #+#             */
+/*   Updated: 2025/03/27 20:16:24 by jinseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *str)
+int	ft_onlyisspace(char *str)
 {
-	size_t	len;
-
-	len = 0;
-	if (str == NULL)
-		return (len);
-	while (*(str + len))
-		len++;
-	return (len);
+	if (str == NULL || *str == '\0')
+		return (0);
+	while (*str)
+	{
+		if (!ft_isspace(*str))
+			return (0);
+		str++;
+	}
+	return (1);
 }

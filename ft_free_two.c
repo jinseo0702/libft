@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_free_two.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jinseo <jinseo@student.42gyeongsan.kr      +#+  +:+       +#+        */
+/*   By: jinseo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/26 13:50:16 by jinseo            #+#    #+#             */
-/*   Updated: 2024/02/28 19:25:50 by jinseo           ###   ########.fr       */
+/*   Created: 2024/11/13 18:47:16 by jinseo            #+#    #+#             */
+/*   Updated: 2024/12/01 10:00:31 by jinseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *str)
+void	ft_free_two(char **arry)
 {
-	size_t	len;
+	int	idx;
 
-	len = 0;
-	if (str == NULL)
-		return (len);
-	while (*(str + len))
-		len++;
-	return (len);
+	idx = 0;
+	while (arry[idx])
+	{
+		ft_freenull(&arry[idx]);
+		arry[idx] = NULL;
+		idx++;
+	}
+	free(arry);
 }

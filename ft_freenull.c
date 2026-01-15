@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_freenull.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jinseo <jinseo@student.42gyeongsan.kr      +#+  +:+       +#+        */
+/*   By: jinseo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/26 13:50:16 by jinseo            #+#    #+#             */
-/*   Updated: 2024/02/28 19:25:50 by jinseo           ###   ########.fr       */
+/*   Created: 2024/11/12 17:35:50 by jinseo            #+#    #+#             */
+/*   Updated: 2024/12/01 10:01:06 by jinseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *str)
+void	ft_freenull(char **str)
 {
-	size_t	len;
-
-	len = 0;
-	if (str == NULL)
-		return (len);
-	while (*(str + len))
-		len++;
-	return (len);
+	if (str && *str)
+	{
+		free(*str);
+		*str = NULL;
+	}
 }

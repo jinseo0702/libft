@@ -1,35 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_strdup_flag.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jinseo <jinseo@student.42gyeongsan.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/28 23:26:03 by jinseo            #+#    #+#             */
-/*   Updated: 2024/02/28 23:31:21 by jinseo           ###   ########.fr       */
+/*   Created: 2024/02/29 18:13:57 by jinseo            #+#    #+#             */
+/*   Updated: 2025/03/27 20:17:50 by jinseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+char	*ft_strdup_flag(const char *s, int *status)
 {
-	unsigned char	*s11;
-	unsigned char	*s22;
-	size_t			cnt;
+	char	*dest;
+	int		i;
 
-	if (!s1 || !s2)
-		return (0);
-	s11 = (unsigned char *)s1;
-	s22 = (unsigned char *)s2;
-	cnt = 0;
-	while ((*s11 || *s22) && cnt < n)
+	dest = (char *)malloc((sizeof(char) * ft_strlen(s)) + 1);
+	i = 0;
+	if (dest == NULL)
 	{
-		if (*s11 != *s22)
-			return (*s11 - *s22);
-		s22++;
-		s11++;
-		cnt++;
+		*status = -1;
+		exit(1);
 	}
-	return (0);
+	while (*(s + i) != '\0')
+	{
+		*(dest + i) = *(s + i);
+		i++;
+	}
+	*(dest + i) = '\0';
+	return (dest);
 }

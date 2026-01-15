@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jinseo <jinseo@student.42gyeongsan.kr      +#+  +:+       +#+        */
+/*   By: jinseo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/29 18:13:57 by jinseo            #+#    #+#             */
-/*   Updated: 2025/03/27 20:17:32 by jinseo           ###   ########.fr       */
+/*   Created: 2024/11/11 16:02:17 by jinseo            #+#    #+#             */
+/*   Updated: 2024/11/11 16:07:07 by jinseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s)
+char	*ft_strndup(const char *s, size_t n)
 {
 	char	*dest;
-	int		i;
+	size_t	i;
 
-	dest = ft_calloc(1, ft_strlen(s) + 1);
+	dest = (char *)malloc((sizeof(char) * ft_strlen(s)) + 1);
 	i = 0;
 	if (dest == NULL)
-		exit(1);
-	if (s == NULL)
-		return (dest);
-	while (*(s + i) != '\0')
+		return (NULL);
+	while (*(s + i) != '\0' && i < n)
 	{
 		*(dest + i) = *(s + i);
 		i++;

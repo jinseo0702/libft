@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_strchr_len.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jinseo <jinseo@student.42gyeongsan.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/28 23:26:03 by jinseo            #+#    #+#             */
-/*   Updated: 2024/02/28 23:31:21 by jinseo           ###   ########.fr       */
+/*   Created: 2024/02/28 21:23:31 by jinseo            #+#    #+#             */
+/*   Updated: 2024/12/01 10:03:22 by jinseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+size_t	ft_strchr_len(const char *s, int c)
 {
-	unsigned char	*s11;
-	unsigned char	*s22;
-	size_t			cnt;
+	char	*scpy;
+	size_t	idx;
 
-	if (!s1 || !s2)
-		return (0);
-	s11 = (unsigned char *)s1;
-	s22 = (unsigned char *)s2;
-	cnt = 0;
-	while ((*s11 || *s22) && cnt < n)
+	scpy = (char *)s;
+	idx = 0;
+	while (*scpy)
 	{
-		if (*s11 != *s22)
-			return (*s11 - *s22);
-		s22++;
-		s11++;
-		cnt++;
+		if (*scpy == (unsigned char)c)
+			return (idx);
+		idx++;
+		scpy++;
 	}
+	if (c == 0)
+		return (0);
 	return (0);
 }
